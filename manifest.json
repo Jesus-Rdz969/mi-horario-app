@@ -1,0 +1,37 @@
+{
+  "name": "Mi Horario",
+  "short_name": "Mi Horario",
+  "description": "Horario, tareas, exámenes y notas para el ciclo escolar",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#12201d",
+  "theme_color": "#1f3d3a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

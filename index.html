@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMiIgZmlsbD0iIzFmM2QzYSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUzIiByPSIyNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWVlNGQ4IiBzdHJva2Utd2lkdGg9IjYiLz4KPGxpbmUgeDE9IjUwIiB5MT0iNTMiIHgyPSI1MCIgeTI9IjM1IiBzdHJva2U9IiNlZWU0ZDgiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjUzIiB4Mj0iNjMiIHkyPSI2MCIgc3Ryb2tlPSIjZWVlNGQ4IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUzIiByPSI0IiBmaWxsPSIjYjM2NjNmIi8+Cjwvc3ZnPgo=">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMiIgZmlsbD0iIzFmM2QzYSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUzIiByPSIyNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWVlNGQ4IiBzdHJva2Utd2lkdGg9IjYiLz4KPGxpbmUgeDE9IjUwIiB5MT0iNTMiIHgyPSI1MCIgeTI9IjM1IiBzdHJva2U9IiNlZWU0ZDgiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjUzIiB4Mj0iNjMiIHkyPSI2MCIgc3Ryb2tlPSIjZWVlNGQ4IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUzIiByPSI0IiBmaWxsPSIjYjM2NjNmIi8+Cjwvc3ZnPgo=">
+<meta name="theme-color" content="#1f3d3a">
+<meta charset="UTF-8">
+<title>mi horario</title>
+<style>
+  :root{
+    --cream:#e6e4d8;
+    --rose:#b3663f;
+    --lavender:#1f3d3a;
+    --sage:#6f8257;
+    --peach:#c99a4a;
+    --plum:#20211d;
+    --plum-soft:#4c5650;
+    --teal:#2c5450;
+    --card-bg: rgba(247,242,231,0.72);
+    --card-border: rgba(255,255,255,0.5);
+    --celda-bg: rgba(255,255,255,0.55);
+    --celda-border: rgba(70,58,82,0.18);
+    --bg-grad: linear-gradient(160deg, #dfe2dc 0%, #cdd6d2 45%, #b9c8c4 100%);
+  }
+  body.oscuro{
+    --plum:#ece7da;
+    --plum-soft:#b9c2bc;
+    --card-bg: rgba(20,28,26,0.72);
+    --card-border: rgba(255,255,255,0.08);
+    --celda-bg: rgba(255,255,255,0.06);
+    --celda-border: rgba(255,255,255,0.14);
+    --bg-grad: linear-gradient(160deg, #12201d 0%, #16211f 45%, #1a2320 100%);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:-apple-system,'Segoe UI',Roboto,'Trebuchet MS',sans-serif;
+    color:var(--plum);
+    background:
+      radial-gradient(circle at 15% 8%, rgba(44,84,80,0.55), transparent 50%),
+      radial-gradient(circle at 88% 12%, rgba(31,61,58,0.4), transparent 45%),
+      radial-gradient(circle at 75% 92%, rgba(179,102,63,0.22), transparent 45%),
+      var(--bg-grad);
+    position:relative;
+    overflow-x:hidden;
+    padding:36px 18px 70px;
+    transition:background .4s, color .4s;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+    z-index:1;
+  }
+  .blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(50px);
+    opacity:0.35;
+    z-index:0;
+    animation:drift 18s ease-in-out infinite;
+  }
+  .blob1{width:280px;height:280px;background:var(--teal);top:-70px;left:-70px;}
+  .blob2{width:180px;height:180px;background:var(--rose);bottom:-30px;right:-30px;animation-delay:4s;opacity:0.6;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(18px,-14px) scale(1.06);}
+  }
+  @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
+
+  .wrap{
+    position:relative;
+    z-index:2;
+    max-width:980px;
+    margin:0 auto;
+  }
+  .top-bar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+  }
+  .racha{
+    font-size:12px;
+    font-weight:600;
+    color:var(--plum-soft);
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    padding:5px 14px;
+    border-radius:999px;
+  }
+  nav.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:26px;
+    flex-wrap:wrap;
+  }
+  nav.tabs button{
+    font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 20px;
+    border-radius:999px;
+    background:transparent;
+    color:var(--plum-soft);
+    border:1.5px solid rgba(120,110,100,0.35);
+    cursor:pointer;
+    transition:transform .15s;
+  }
+  nav.tabs button:hover{transform:translateY(-2px);}
+  nav.tabs button.activo{
+    background:var(--teal);
+    color:#f0efe6;
+    border-color:var(--teal);
+  }
+  .vista{display:none;}
+  .vista.activa{display:block;}
+
+  header{
+    text-align:center;
+    margin-bottom:32px;
+  }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--plum-soft);
+    opacity:0.75;
+  }
+  h1{
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(34px,6vw,54px);
+    margin:6px 0 4px;
+    color:var(--plum);
+  }
+  .sub{
+    font-size:14px;
+    color:var(--plum-soft);
+  }
+  .contador{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    background:var(--rose);
+    padding:4px 14px;
+    border-radius:999px;
+  }
+  .leyenda{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px 12px;
+    margin-top:12px;
+    max-width:640px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .leyenda-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:11px;
+    color:var(--plum-soft);
+  }
+  .leyenda-punto{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:26px;
+    padding:8px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 20px 50px -25px rgba(0,0,0,0.35);
+    overflow-x:auto;
+    transition:background .4s, border-color .4s;
+  }
+  #vistaTareas .card, #vistaNotas .card, #vistaExamenes .card{padding:18px;}
+
+  table{
+    border-collapse:separate;
+    border-spacing:6px;
+    width:100%;
+    min-width:760px;
+  }
+  th{
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:500;
+    font-size:15px;
+    text-align:center;
+    padding:12px 8px;
+    border-radius:14px;
+    color:#fff;
+  }
+  th.hora-col{background:var(--peach);color:#20211d;}
+  th[data-day="0"]{background:var(--teal);}
+  th[data-day="1"]{background:var(--lavender);}
+  th[data-day="2"]{background:var(--teal);}
+  th[data-day="3"]{background:var(--sage);}
+  th[data-day="4"]{background:var(--lavender);}
+
+  td{
+    padding:0;
+    vertical-align:middle;
+  }
+  .hora{
+    background:rgba(130,120,105,0.12);
+    border:1.5px dashed transparent;
+    border-radius:14px;
+    padding:14px 10px;
+    text-align:center;
+    font-weight:600;
+    font-size:14px;
+    color:var(--plum);
+    white-space:nowrap;
+    outline:none;
+  }
+  .hora:hover{border-color:rgba(120,110,100,0.4);}
+  .hora:focus{
+    background:#fff;
+    color:#20211d;
+    border:1.5px solid var(--teal);
+  }
+  .celda{
+    min-height:52px;
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    padding:10px 10px;
+    font-size:14px;
+    text-align:center;
+    outline:none;
+    color:var(--plum);
+    transition:background .2s, border-color .2s, transform .15s;
+    cursor:text;
+  }
+  .celda:hover{border-color:rgba(120,110,100,0.5);}
+  .celda:focus{
+    background:#fff;
+    color:#20211d;
+    border:1.5px solid var(--teal);
+    transform:scale(1.02);
+  }
+  .celda:empty::before{
+    content:"añadir clase";
+    color:rgba(120,110,100,0.6);
+    font-style:italic;
+  }
+  tr.recreo .hora{background:var(--peach);color:#20211d;}
+  tr.recreo .celda{
+    background:repeating-linear-gradient(135deg, rgba(201,154,74,0.28) 0 10px, rgba(201,154,74,0.14) 10px 20px);
+    border-style:solid;
+    border-color:rgba(201,154,74,0.6);
+    font-weight:600;
+    cursor:default;
+  }
+  tr.recreo .celda:empty::before{
+    content:"descanso ·";
+    font-style:normal;
+    color:var(--plum-soft);
+  }
+
+  .toolbar{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:24px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:11px 22px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    transition:transform .15s, box-shadow .15s;
+  }
+  button:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+  button:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--teal);color:#f0efe6;box-shadow:0 8px 20px -8px rgba(31,61,58,0.6);}
+  .btn-ghost{background:transparent;color:var(--plum-soft);border:1.5px solid rgba(120,110,100,0.4);}
+  .status{
+    text-align:center;
+    font-size:12px;
+    color:var(--plum-soft);
+    margin-top:12px;
+    min-height:16px;
+    opacity:0;
+    transition:opacity .3s;
+  }
+  .status.show{opacity:0.8;}
+
+  footer{
+    text-align:center;
+    margin-top:30px;
+    font-size:12px;
+    color:var(--plum-soft);
+    opacity:0.6;
+    font-style:italic;
+  }
+
+  /* ---- tareas ---- */
+  .tareas-lista{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .tarea-fila{
+    display:grid;
+    grid-template-columns:84px 1fr 128px auto;
+    gap:8px;
+    align-items:stretch;
+  }
+  .tarea-fila.hecha .tarea-materia,
+  .tarea-fila.hecha .tarea-texto{
+    opacity:0.45;
+    text-decoration:line-through;
+  }
+  .tarea-fila.atrasada .tarea-fecha{
+    border-color:var(--rose);
+    color:var(--rose);
+    font-weight:700;
+  }
+  .tarea-materia, .tarea-texto{
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    outline:none;
+    font-family:inherit;
+    color:var(--plum);
+  }
+  .tarea-materia{
+    font-weight:700;
+    font-size:12px;
+    width:84px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6px;
+    overflow:hidden;
+    word-break:break-word;
+  }
+  .tarea-texto{
+    font-size:14px;
+    padding:12px 14px;
+    min-height:84px;
+    display:flex;
+    align-items:center;
+  }
+  .tarea-materia:focus, .tarea-texto:focus{
+    background:#fff;
+    color:#20211d;
+    border:1.5px solid var(--teal);
+  }
+  .tarea-materia:empty::before{content:"materia"; color:rgba(120,110,100,0.6); font-style:italic; font-weight:400;}
+  .tarea-texto:empty::before{content:"¿qué hay que hacer?"; color:rgba(120,110,100,0.6); font-style:italic;}
+
+  .tarea-fecha{
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    color:var(--plum-soft);
+    font-size:12px;
+    padding:0 8px;
+    font-family:inherit;
+    outline:none;
+  }
+  .tarea-fecha:focus{border:1.5px solid var(--teal);}
+
+  .tarea-fila{
+    border-left:4px solid transparent;
+    padding-left:4px;
+    border-radius:2px;
+    transition:border-color .2s;
+  }
+
+  .tarea-acciones{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    align-items:stretch;
+    justify-content:center;
+  }
+  .tarea-check, .tarea-borrar, .tarea-prioridad{
+    border:none;
+    border-radius:12px;
+    width:40px;
+    height:38px;
+    cursor:pointer;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .15s;
+  }
+  .tarea-check:hover, .tarea-borrar:hover, .tarea-prioridad:hover{transform:scale(1.08);}
+  .tarea-check{background:var(--sage);color:#fff;}
+  .tarea-fila.hecha .tarea-check{background:var(--teal);}
+  .tarea-borrar{background:rgba(179,102,63,0.18);color:var(--rose);}
+  .tarea-prioridad{background:var(--celda-bg);border:1.5px dashed var(--celda-border);color:var(--plum-soft);font-size:14px;}
+
+  .tarea-agregar{
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+  }
+  @media (max-width:560px){
+    .tarea-fila{grid-template-columns:64px 1fr;grid-template-areas:"m t" "f a";}
+    .tarea-materia{grid-area:m;width:64px;font-size:11px;}
+    .tarea-texto{grid-area:t;}
+    .tarea-fecha{grid-area:f;}
+    .tarea-acciones{grid-area:a;flex-direction:row;}
+  }
+
+  /* ---- notas ---- */
+  .notas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
+    gap:14px;
+  }
+  .nota{
+    position:relative;
+    background:var(--peach);
+    color:#2c2210;
+    border-radius:6px 6px 16px 6px;
+    padding:14px 12px;
+    min-height:140px;
+    box-shadow:0 10px 20px -12px rgba(0,0,0,0.4);
+    transform:rotate(-1deg);
+    display:flex;
+    flex-direction:column;
+  }
+  .nota:nth-child(3n+2){background:var(--sage);color:#1c2412;transform:rotate(1.2deg);}
+  .nota:nth-child(3n){background:#cdb98f;color:#2c2210;transform:rotate(-0.6deg);}
+  .nota textarea{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    resize:none;
+    font-family:inherit;
+    font-size:13px;
+    color:inherit;
+    width:100%;
+  }
+  .nota .nota-borrar{
+    align-self:flex-end;
+    background:rgba(0,0,0,0.12);
+    color:inherit;
+    border:none;
+    border-radius:8px;
+    width:26px;
+    height:26px;
+    font-size:14px;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .nota-agregar{
+    margin-top:16px;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ---- exámenes ---- */
+  .examenes-lista{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .examen-item{
+    background:rgba(130,120,105,0.06);
+    border-radius:16px;
+    padding:8px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .examen-temas{
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    outline:none;
+    font-family:inherit;
+    color:var(--plum);
+    font-size:13px;
+    padding:10px 14px;
+    min-height:44px;
+  }
+  .examen-temas:focus{background:#fff;color:#20211d;border:1.5px solid var(--teal);}
+  .examen-temas:empty::before{content:"✎ temas a estudiar…"; color:rgba(120,110,100,0.6); font-style:italic;}
+  .examen-fila{
+    display:grid;
+    grid-template-columns:84px 1fr 128px 110px auto;
+    gap:8px;
+    align-items:stretch;
+  }
+  .examen-materia, .examen-texto{
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    outline:none;
+    font-family:inherit;
+    color:var(--plum);
+  }
+  .examen-materia{
+    font-weight:700;
+    font-size:12px;
+    width:84px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6px;
+    overflow:hidden;
+    word-break:break-word;
+  }
+  .examen-texto{
+    font-size:14px;
+    padding:12px 14px;
+    min-height:84px;
+    display:flex;
+    align-items:center;
+  }
+  .examen-materia:focus, .examen-texto:focus{
+    background:#fff;
+    color:#20211d;
+    border:1.5px solid var(--teal);
+  }
+  .examen-materia:empty::before{content:"materia"; color:rgba(120,110,100,0.6); font-style:italic; font-weight:400;}
+  .examen-texto:empty::before{content:"tema del examen"; color:rgba(120,110,100,0.6); font-style:italic;}
+
+  .examen-fecha{
+    border-radius:14px;
+    background:var(--celda-bg);
+    border:1.5px dashed var(--celda-border);
+    color:var(--plum-soft);
+    font-size:12px;
+    padding:0 8px;
+    font-family:inherit;
+    outline:none;
+  }
+  .examen-fecha:focus{border:1.5px solid var(--teal);}
+
+  .examen-cuenta{
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+    padding:6px 8px;
+    color:#fff;
+    background:var(--sage);
+  }
+  .examen-cuenta.urgente{background:var(--rose);}
+  .examen-cuenta.pronto{background:var(--peach);color:#2c2210;}
+  .examen-cuenta.pasado{background:transparent;color:var(--plum-soft);border:1.5px dashed var(--celda-border);font-weight:600;}
+
+  .examen-borrar{
+    border:none;
+    border-radius:12px;
+    width:40px;
+    height:100%;
+    min-height:40px;
+    cursor:pointer;
+    font-size:16px;
+    background:rgba(179,102,63,0.18);
+    color:var(--rose);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .15s;
+  }
+  .examen-borrar:hover{transform:scale(1.08);}
+
+  .examen-agregar{
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+  }
+  @media (max-width:640px){
+    .examen-fila{grid-template-columns:64px 1fr;grid-template-areas:"m t" "f c" "b b";}
+    .examen-materia{grid-area:m;width:64px;font-size:11px;}
+    .examen-texto{grid-area:t;}
+    .examen-fecha{grid-area:f;}
+    .examen-cuenta{grid-area:c;}
+    .examen-borrar{grid-area:b;width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<div class="wrap">
+  <div class="top-bar">
+    <button type="button" class="btn-ghost" id="deshacer" style="padding:5px 16px;font-size:12px;display:none;">↺ deshacer</button>
+  </div>
+
+  <nav class="tabs">
+    <button type="button" class="activo" data-vista="horario">horario</button>
+    <button type="button" data-vista="tareas">tareas</button>
+    <button type="button" data-vista="notas">notas</button>
+    <button type="button" data-vista="examenes">exámenes</button>
+  </nav>
+
+  <div id="vistaHorario" class="vista activa">
+    <header>
+      <div class="eyebrow"></div>
+      <h1>mi horario</h1>
+      <div class="sub">toca cualquier casilla para escribir tu clase ·</div>
+    </header>
+
+    <div class="card" id="tarjetaHorario">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th class="hora-col">hora</th>
+            <th data-day="0" contenteditable="true">lunes</th>
+            <th data-day="1" contenteditable="true">martes</th>
+            <th data-day="2" contenteditable="true">miércoles</th>
+            <th data-day="3" contenteditable="true">jueves</th>
+            <th data-day="4" contenteditable="true">viernes</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+      </table>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn-primary" id="guardar">guardar horario</button>
+      <button class="btn-ghost" id="exportar">exportar como imagen</button>
+      <button class="btn-ghost" id="limpiar">borrar todo</button>
+    </div>
+  </div>
+
+  <div id="vistaTareas" class="vista">
+    <header>
+      <div class="eyebrow">materia y lo que toca hacer</div>
+      <h1>mis tareas</h1>
+      <div class="sub">toca una casilla para anotar ·</div>
+      <div class="contador" id="contadorTareas">0 pendientes</div>
+      <div class="leyenda" id="leyendaPrioridad"></div>
+    </header>
+
+    <div class="card">
+      <div class="tareas-lista" id="listaTareas"></div>
+      <div class="tarea-agregar">
+        <button class="btn-primary" id="agregarTarea">+ agregar tarea</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn-ghost" id="limpiarTareas">borrar todo</button>
+    </div>
+  </div>
+
+  <div id="vistaNotas" class="vista">
+    <header>
+      <div class="eyebrow">apuntes sueltos</div>
+      <h1>notas rápidas</h1>
+      <div class="sub">lo que no cabe en el horario ni en las tareas ·</div>
+    </header>
+
+    <div class="card">
+      <div class="notas-grid" id="listaNotas"></div>
+      <div class="nota-agregar">
+        <button class="btn-primary" id="agregarNota">+ agregar nota</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="vistaExamenes" class="vista">
+    <header>
+      <div class="eyebrow"></div>
+      <h1>exámenes</h1>
+      <div class="sub"></div>
+    </header>
+
+    <div class="card">
+      <div class="examenes-lista" id="listaExamenes"></div>
+      <div class="examen-agregar">
+        <button class="btn-primary" id="agregarExamen">+ agregar examen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="status" id="estado">guardado ·</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+/* ---- tema automático según la hora ---- */
+document.body.classList.add('oscuro');
+
+/* ---- navegación entre vistas, sin enlaces ni recargas ---- */
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('activo'));
+    document.querySelectorAll('.vista').forEach(v=>v.classList.remove('activa'));
+    btn.classList.add('activo');
+    const id = 'vista' + btn.dataset.vista.charAt(0).toUpperCase() + btn.dataset.vista.slice(1);
+    document.getElementById(id).classList.add('activa');
+  });
+});
+
+const estado = document.getElementById('estado');
+function mostrarEstado(msg){
+  estado.textContent = msg;
+  estado.classList.add('show');
+  clearTimeout(mostrarEstado._t);
+  mostrarEstado._t = setTimeout(()=>estado.classList.remove('show'), 1800);
+}
+
+const hayAlmacenamiento = (function(){
+  try{
+    const prueba = '__prueba__';
+    localStorage.setItem(prueba, '1');
+    localStorage.removeItem(prueba);
+    return true;
+  }catch(e){ return false; }
+})();
+
+function guardarLocal(clave, valor){
+  try{
+    localStorage.setItem(clave, valor);
+    return true;
+  }catch(e){
+    console.error('error al guardar local', e);
+    return false;
+  }
+}
+function leerLocal(clave){
+  try{
+    const v = localStorage.getItem(clave);
+    return v === null ? null : { value: v };
+  }catch(e){
+    return null;
+  }
+}
+
+/* ---- deshacer ---- */
+let historialDeshacer = [];
+const btnDeshacer = document.getElementById('deshacer');
+
+function guardarEnHistorial(tipo, datos){
+  historialDeshacer.push({tipo, datos});
+  if(historialDeshacer.length > 15) historialDeshacer.shift();
+  btnDeshacer.style.display = 'inline-block';
+}
+
+function deshacerUltimo(){
+  const accion = historialDeshacer.pop();
+  if(!accion) return;
+  if(historialDeshacer.length === 0) btnDeshacer.style.display = 'none';
+
+  if(accion.tipo === 'tarea'){
+    tareas.splice(accion.datos.indice, 0, accion.datos.tarea);
+    ordenarTareas();
+    guardarTareas();
+    actualizarContador();
+  } else if(accion.tipo === 'limpiarTareas'){
+    tareas = accion.datos;
+    ordenarTareas();
+    guardarTareas();
+    actualizarContador();
+  } else if(accion.tipo === 'examen'){
+    examenes.splice(accion.datos.indice, 0, accion.datos.examen);
+    const item = crearFilaExamen(accion.datos.examen);
+    const siguiente = listaExamenes.children[accion.datos.indice];
+    if(siguiente) listaExamenes.insertBefore(item, siguiente); else listaExamenes.appendChild(item);
+    guardarExamenes();
+  } else if(accion.tipo === 'nota'){
+    notas.splice(accion.datos.indice, 0, accion.datos.nota);
+    const item = crearNota(accion.datos.nota);
+    const siguiente = listaNotas.children[accion.datos.indice];
+    if(siguiente) listaNotas.insertBefore(item, siguiente); else listaNotas.appendChild(item);
+    guardarNotas();
+  } else if(accion.tipo === 'horario'){
+    Object.entries(accion.datos).forEach(([key, val])=>{
+      const el = document.querySelector('[data-key="'+key+'"]');
+      if(el) el.textContent = val;
+    });
+    guardarTodo();
+  }
+  mostrarEstado('deshecho ·');
+}
+
+btnDeshacer.addEventListener('click', deshacerUltimo);
+
+/* ---- horario ---- */
+const HORAS = [
+  {ini:"07:00", fin:"07:50"},
+  {ini:"07:50", fin:"08:40"},
+  {ini:"08:40", fin:"09:30"},
+  {ini:"09:30", fin:"09:50", recreo:true},
+  {ini:"09:50", fin:"10:40"},
+  {ini:"10:40", fin:"11:30"},
+  {ini:"11:30", fin:"12:20"},
+  {ini:"12:20", fin:"13:10"}
+];
+const DIAS = 5;
+const cuerpo = document.getElementById('cuerpo');
+
+HORAS.forEach((h, fila) => {
+  const tr = document.createElement('tr');
+  if(h.recreo) tr.classList.add('recreo');
+
+  const tdHora = document.createElement('td');
+  const divHora = document.createElement('div');
+  divHora.className = 'hora';
+  divHora.contentEditable = 'true';
+  divHora.dataset.key = 'hora:' + fila;
+  divHora.textContent = h.ini + ' – ' + h.fin;
+  tdHora.appendChild(divHora);
+  tr.appendChild(tdHora);
+
+  for(let d=0; d<DIAS; d++){
+    const td = document.createElement('td');
+    const div = document.createElement('div');
+    div.className = 'celda';
+    div.setAttribute('contenteditable', h.recreo ? 'false' : 'true');
+    div.dataset.key = 'horario:' + fila + ':' + d;
+    td.appendChild(div);
+    tr.appendChild(td);
+  }
+  cuerpo.appendChild(tr);
+});
+
+let saveTimer = null;
+function programarGuardado(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(guardarTodo, 600);
+}
+
+async function guardarTodo(){
+  if(!hayAlmacenamiento) return;
+  try{
+    const datos = {};
+    document.querySelectorAll('.celda, .hora').forEach(c=>{
+      datos[c.dataset.key] = c.textContent;
+    });
+    document.querySelectorAll('th[contenteditable]').forEach(th=>{
+      datos['dia:'+th.dataset.day] = th.textContent;
+    });
+    const r = guardarLocal('mi-horario', JSON.stringify(datos));
+    if(r) mostrarEstado('guardado ·');
+  }catch(e){
+    console.error('error al guardar', e);
+  }
+}
+
+async function cargarTodo(){
+  if(!hayAlmacenamiento) return;
+  try{
+    const r = leerLocal('mi-horario');
+    if(r && r.value){
+      const datos = JSON.parse(r.value);
+      Object.entries(datos).forEach(([key, val])=>{
+        if(key.startsWith('dia:')){
+          const d = key.split(':')[1];
+          const th = document.querySelector('th[data-day="'+d+'"]');
+          if(th) th.textContent = val;
+        } else {
+          const el = document.querySelector('[data-key="'+key+'"]');
+          if(el) el.textContent = val;
+        }
+      });
+    }
+  }catch(e){
+    // no hay datos guardados todavía
+  }
+}
+
+document.addEventListener('input', (e)=>{
+  if(e.target.classList.contains('celda') || e.target.classList.contains('hora') || e.target.matches('th[contenteditable]')){
+    programarGuardado();
+  }
+});
+
+document.getElementById('guardar').addEventListener('click', guardarTodo);
+document.getElementById('limpiar').addEventListener('click', async ()=>{
+  const previo = {};
+  document.querySelectorAll('.celda').forEach(c=>{ previo[c.dataset.key] = c.textContent; });
+  guardarEnHistorial('horario', previo);
+  document.querySelectorAll('.celda').forEach(c=>c.textContent='');
+  await guardarTodo();
+  mostrarEstado('todo limpio ·');
+});
+
+document.getElementById('exportar').addEventListener('click', ()=>{
+  if(typeof html2canvas === 'undefined'){
+    mostrarEstado('no se pudo exportar');
+    return;
+  }
+  mostrarEstado('generando imagen…');
+  html2canvas(document.getElementById('tarjetaHorario'), {backgroundColor:null, scale:2}).then(canvas=>{
+    const link = document.createElement('a');
+    link.download = 'mi-horario.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    mostrarEstado('imagen lista ·');
+  }).catch(()=>{ mostrarEstado('no se pudo exportar'); });
+});
+
+cargarTodo();
+
+/* ---- tareas ---- */
+const listaTareas = document.getElementById('listaTareas');
+const contadorTareas = document.getElementById('contadorTareas');
+const leyendaPrioridad = document.getElementById('leyendaPrioridad');
+let tareas = [];
+let idTarea = 0;
+
+const NIVELES_PRIORIDAD = [
+  { id:'',   etiqueta:'sin prioridad', color:'transparent', rango:99 },
+  { id:'p1', etiqueta:'urgente',        color:'#a8503a', rango:1 },
+  { id:'p2', etiqueta:'muy alta',       color:'#b3663f', rango:2 },
+  { id:'p3', etiqueta:'alta',           color:'#c2874f', rango:3 },
+  { id:'p4', etiqueta:'importante',     color:'#c99a4a', rango:4 },
+  { id:'p5', etiqueta:'media',          color:'#b9a15a', rango:5 },
+  { id:'p6', etiqueta:'moderada',       color:'#8a9463', rango:6 },
+  { id:'p7', etiqueta:'baja',           color:'#6f8257', rango:7 },
+  { id:'p8', etiqueta:'muy baja',       color:'#4f7268', rango:8 },
+  { id:'p9', etiqueta:'mínima',         color:'#2c5450', rango:9 },
+  { id:'p10',etiqueta:'algún día',      color:'#1f3d3a', rango:10 }
+];
+const LEGADO = { alta:'p2', media:'p5', baja:'p8' };
+
+function nivelDe(idNivel){
+  return NIVELES_PRIORIDAD.find(n=>n.id === idNivel) || NIVELES_PRIORIDAD[0];
+}
+function colorTexto(hex){
+  if(hex === 'transparent') return 'var(--plum-soft)';
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return (r*0.299 + g*0.587 + b*0.114) > 150 ? '#20211d' : '#fff';
+}
+
+leyendaPrioridad.innerHTML = NIVELES_PRIORIDAD.filter(n=>n.id).map(n=>
+  '<span class="leyenda-item"><span class="leyenda-punto" style="background:'+n.color+'"></span>'+n.etiqueta+'</span>'
+).join('');
+
+function actualizarContador(){
+  const pendientes = tareas.filter(t=>!t.hecha).length;
+  contadorTareas.textContent = pendientes + (pendientes === 1 ? ' pendiente' : ' pendientes');
+}
+
+function hoyISO(){ return new Date().toISOString().slice(0,10); }
+
+function ordenarTareas(){
+  tareas.sort((a,b)=> nivelDe(a.prioridad).rango - nivelDe(b.prioridad).rango);
+  listaTareas.innerHTML = '';
+  tareas.forEach(t=> listaTareas.appendChild(crearFilaTarea(t)));
+}
+
+function crearFilaTarea(t){
+  if(t.prioridad && LEGADO[t.prioridad]) t.prioridad = LEGADO[t.prioridad];
+  const fila = document.createElement('div');
+  fila.className = 'tarea-fila' + (t.hecha ? ' hecha' : '');
+  if(t.fecha && !t.hecha && t.fecha < hoyISO()) fila.classList.add('atrasada');
+  fila.dataset.id = t.id;
+  fila.style.borderLeftColor = nivelDe(t.prioridad).color;
+
+  const materia = document.createElement('div');
+  materia.className = 'tarea-materia';
+  materia.contentEditable = 'true';
+  materia.textContent = t.materia || '';
+
+  const texto = document.createElement('div');
+  texto.className = 'tarea-texto';
+  texto.contentEditable = 'true';
+  texto.textContent = t.texto || '';
+
+  const fecha = document.createElement('input');
+  fecha.className = 'tarea-fecha';
+  fecha.type = 'date';
+  fecha.value = t.fecha || '';
+
+  const acciones = document.createElement('div');
+  acciones.className = 'tarea-acciones';
+
+  const btnPrioridad = document.createElement('button');
+  btnPrioridad.className = 'tarea-prioridad';
+  btnPrioridad.type = 'button';
+  btnPrioridad.textContent = '●';
+  function pintarBoton(){
+    const n = nivelDe(t.prioridad);
+    btnPrioridad.style.background = n.id ? n.color : '';
+    btnPrioridad.style.borderColor = n.id ? n.color : '';
+    btnPrioridad.style.color = n.id ? colorTexto(n.color) : '';
+    btnPrioridad.title = 'prioridad: ' + n.etiqueta + ' (toca para cambiar)';
+  }
+  pintarBoton();
+
+  const btnCheck = document.createElement('button');
+  btnCheck.className = 'tarea-check';
+  btnCheck.type = 'button';
+  btnCheck.textContent = '✓';
+  btnCheck.title = 'marcar como hecha';
+
+  const btnBorrar = document.createElement('button');
+  btnBorrar.className = 'tarea-borrar';
+  btnBorrar.type = 'button';
+  btnBorrar.textContent = '×';
+  btnBorrar.title = 'borrar tarea';
+
+  acciones.appendChild(btnPrioridad);
+  acciones.appendChild(btnCheck);
+  acciones.appendChild(btnBorrar);
+  fila.appendChild(materia);
+  fila.appendChild(texto);
+  fila.appendChild(fecha);
+  fila.appendChild(acciones);
+
+  materia.addEventListener('input', ()=>{ actualizarTarea(t.id, {materia: materia.textContent}); });
+  texto.addEventListener('input', ()=>{ actualizarTarea(t.id, {texto: texto.textContent}); });
+  fecha.addEventListener('change', ()=>{
+    actualizarTarea(t.id, {fecha: fecha.value});
+    fila.classList.toggle('atrasada', !!(fecha.value && !fila.classList.contains('hecha') && fecha.value < hoyISO()));
+  });
+  btnPrioridad.addEventListener('click', ()=>{
+    const actual = NIVELES_PRIORIDAD.findIndex(n=>n.id === (t.prioridad || ''));
+    const siguiente = NIVELES_PRIORIDAD[(actual + 1) % NIVELES_PRIORIDAD.length];
+    t.prioridad = siguiente.id;
+    fila.style.borderLeftColor = siguiente.color;
+    pintarBoton();
+    actualizarTarea(t.id, {prioridad: siguiente.id});
+    ordenarTareas();
+  });
+  btnCheck.addEventListener('click', ()=>{
+    const nueva = !fila.classList.contains('hecha');
+    fila.classList.toggle('hecha', nueva);
+    if(nueva) fila.classList.remove('atrasada');
+    actualizarTarea(t.id, {hecha: nueva});
+    actualizarContador();
+  });
+  btnBorrar.addEventListener('click', ()=>{
+    const indice = tareas.findIndex(x=>x.id === t.id);
+    if(indice > -1){
+      guardarEnHistorial('tarea', {tarea: tareas[indice], indice});
+      tareas.splice(indice, 1);
+    }
+    fila.remove();
+    guardarTareas();
+    actualizarContador();
+  });
+
+  return fila;
+}
+
+function actualizarTarea(id, cambios){
+  const t = tareas.find(x=>x.id === id);
+  if(t){ Object.assign(t, cambios); programarGuardadoTareas(); }
+}
+
+function agregarTareaNueva(datos){
+  idTarea += 1;
+  const t = { id: idTarea, materia:'', texto:'', fecha:'', hecha:false, prioridad:'', ...datos };
+  tareas.push(t);
+  listaTareas.appendChild(crearFilaTarea(t));
+  return t;
+}
+
+let saveTareasTimer = null;
+function programarGuardadoTareas(){
+  clearTimeout(saveTareasTimer);
+  saveTareasTimer = setTimeout(guardarTareas, 600);
+}
+
+async function guardarTareas(){
+  if(!hayAlmacenamiento) return;
+  try{
+    guardarLocal('mis-tareas', JSON.stringify(tareas));
+    mostrarEstado('guardado ·');
+  }catch(e){
+    console.error('error al guardar tareas', e);
+  }
+}
+
+async function cargarTareas(){
+  if(hayAlmacenamiento){
+    try{
+      const r = leerLocal('mis-tareas');
+      if(r && r.value){
+        const guardadas = JSON.parse(r.value);
+        guardadas.forEach(t=>{
+          idTarea = Math.max(idTarea, t.id || 0);
+          tareas.push(t);
+        });
+      }
+    }catch(e){ /* nada guardado todavía */ }
+  }
+  if(tareas.length === 0){
+    for(let i=0; i<10; i++){ agregarTareaNueva({}); }
+  } else {
+    ordenarTareas();
+  }
+  actualizarContador();
+}
+
+document.getElementById('agregarTarea').addEventListener('click', ()=>{
+  agregarTareaNueva({});
+  guardarTareas();
+  actualizarContador();
+  const fila = listaTareas.lastElementChild;
+  fila.querySelector('.tarea-materia').focus();
+});
+
+document.getElementById('limpiarTareas').addEventListener('click', async ()=>{
+  guardarEnHistorial('limpiarTareas', JSON.parse(JSON.stringify(tareas)));
+  listaTareas.innerHTML = '';
+  tareas = [];
+  idTarea = 0;
+  for(let i=0; i<10; i++){ agregarTareaNueva({}); }
+  await guardarTareas();
+  actualizarContador();
+  mostrarEstado('todo limpio ·');
+});
+
+cargarTareas();
+
+/* ---- notas rápidas ---- */
+const listaNotas = document.getElementById('listaNotas');
+let notas = [];
+let idNota = 0;
+
+function crearNota(n){
+  const div = document.createElement('div');
+  div.className = 'nota';
+  div.dataset.id = n.id;
+
+  const textarea = document.createElement('textarea');
+  textarea.placeholder = 'escribe aquí…';
+  textarea.value = n.texto || '';
+
+  const btnBorrar = document.createElement('button');
+  btnBorrar.className = 'nota-borrar';
+  btnBorrar.type = 'button';
+  btnBorrar.textContent = '×';
+
+  div.appendChild(textarea);
+  div.appendChild(btnBorrar);
+
+  let notaTimer = null;
+  textarea.addEventListener('input', ()=>{
+    const nn = notas.find(x=>x.id === n.id);
+    if(nn) nn.texto = textarea.value;
+    clearTimeout(notaTimer);
+    notaTimer = setTimeout(guardarNotas, 600);
+  });
+  btnBorrar.addEventListener('click', ()=>{
+    const indice = notas.findIndex(x=>x.id === n.id);
+    if(indice > -1){
+      guardarEnHistorial('nota', {nota: notas[indice], indice});
+      notas.splice(indice, 1);
+    }
+    div.remove();
+    guardarNotas();
+  });
+
+  return div;
+}
+
+function agregarNotaNueva(datos){
+  idNota += 1;
+  const n = { id: idNota, texto:'', ...datos };
+  notas.push(n);
+  listaNotas.appendChild(crearNota(n));
+  return n;
+}
+
+async function guardarNotas(){
+  if(!hayAlmacenamiento) return;
+  try{
+    guardarLocal('mis-notas', JSON.stringify(notas));
+    mostrarEstado('guardado ·');
+  }catch(e){
+    console.error('error al guardar notas', e);
+  }
+}
+
+async function cargarNotas(){
+  if(hayAlmacenamiento){
+    try{
+      const r = leerLocal('mis-notas');
+      if(r && r.value){
+        const guardadas = JSON.parse(r.value);
+        guardadas.forEach(n=>{
+          idNota = Math.max(idNota, n.id || 0);
+          notas.push(n);
+          listaNotas.appendChild(crearNota(n));
+        });
+      }
+    }catch(e){ /* nada guardado todavía */ }
+  }
+  if(notas.length === 0){
+    agregarNotaNueva({});
+  }
+}
+
+document.getElementById('agregarNota').addEventListener('click', ()=>{
+  agregarNotaNueva({});
+  guardarNotas();
+  listaNotas.lastElementChild.querySelector('textarea').focus();
+});
+
+cargarNotas();
+
+/* ---- exámenes ---- */
+const listaExamenes = document.getElementById('listaExamenes');
+let examenes = [];
+let idExamen = 0;
+
+function diasRestantes(fechaISO){
+  const hoy = new Date(hoyISO() + 'T00:00:00');
+  const meta = new Date(fechaISO + 'T00:00:00');
+  return Math.round((meta - hoy) / 86400000);
+}
+
+function textoCuenta(dias){
+  if(dias > 1) return 'faltan ' + dias + ' días';
+  if(dias === 1) return 'es mañana';
+  if(dias === 0) return 'es hoy';
+  if(dias === -1) return 'fue ayer';
+  return 'pasó hace ' + Math.abs(dias) + ' días';
+}
+
+function crearFilaExamen(ex){
+  const item = document.createElement('div');
+  item.className = 'examen-item';
+  item.dataset.id = ex.id;
+
+  const fila = document.createElement('div');
+  fila.className = 'examen-fila';
+
+  const materia = document.createElement('div');
+  materia.className = 'examen-materia';
+  materia.contentEditable = 'true';
+  materia.textContent = ex.materia || '';
+
+  const texto = document.createElement('div');
+  texto.className = 'examen-texto';
+  texto.contentEditable = 'true';
+  texto.textContent = ex.texto || '';
+
+  const fecha = document.createElement('input');
+  fecha.className = 'examen-fecha';
+  fecha.type = 'date';
+  fecha.value = ex.fecha || '';
+
+  const cuenta = document.createElement('div');
+  cuenta.className = 'examen-cuenta';
+
+  const btnBorrar = document.createElement('button');
+  btnBorrar.className = 'examen-borrar';
+  btnBorrar.type = 'button';
+  btnBorrar.textContent = '×';
+  btnBorrar.title = 'borrar examen';
+
+  fila.appendChild(materia);
+  fila.appendChild(texto);
+  fila.appendChild(fecha);
+  fila.appendChild(cuenta);
+  fila.appendChild(btnBorrar);
+
+  const temas = document.createElement('div');
+  temas.className = 'examen-temas';
+  temas.contentEditable = 'true';
+  temas.textContent = ex.temas || '';
+
+  item.appendChild(fila);
+  item.appendChild(temas);
+
+  function refrescarCuenta(){
+    cuenta.classList.remove('urgente','pronto','pasado');
+    if(!fecha.value){
+      cuenta.textContent = 'sin fecha';
+      cuenta.classList.add('pasado');
+      return;
+    }
+    const dias = diasRestantes(fecha.value);
+    cuenta.textContent = textoCuenta(dias);
+    if(dias < 0) cuenta.classList.add('pasado');
+    else if(dias <= 2) cuenta.classList.add('urgente');
+    else if(dias <= 7) cuenta.classList.add('pronto');
+  }
+  refrescarCuenta();
+
+  materia.addEventListener('input', ()=>{ actualizarExamen(ex.id, {materia: materia.textContent}); });
+  texto.addEventListener('input', ()=>{ actualizarExamen(ex.id, {texto: texto.textContent}); });
+  temas.addEventListener('input', ()=>{ actualizarExamen(ex.id, {temas: temas.textContent}); });
+  fecha.addEventListener('change', ()=>{
+    actualizarExamen(ex.id, {fecha: fecha.value});
+    refrescarCuenta();
+  });
+  btnBorrar.addEventListener('click', ()=>{
+    const indice = examenes.findIndex(x=>x.id === ex.id);
+    if(indice > -1){
+      guardarEnHistorial('examen', {examen: examenes[indice], indice});
+      examenes.splice(indice, 1);
+    }
+    item.remove();
+    guardarExamenes();
+  });
+
+  return item;
+}
+
+function actualizarExamen(id, cambios){
+  const ex = examenes.find(x=>x.id === id);
+  if(ex){ Object.assign(ex, cambios); programarGuardadoExamenes(); }
+}
+
+function agregarExamenNuevo(datos){
+  idExamen += 1;
+  const ex = { id: idExamen, materia:'', texto:'', fecha:'', temas:'', ...datos };
+  examenes.push(ex);
+  listaExamenes.appendChild(crearFilaExamen(ex));
+  return ex;
+}
+
+let saveExamenesTimer = null;
+function programarGuardadoExamenes(){
+  clearTimeout(saveExamenesTimer);
+  saveExamenesTimer = setTimeout(guardarExamenes, 600);
+}
+
+async function guardarExamenes(){
+  if(!hayAlmacenamiento) return;
+  try{
+    guardarLocal('mis-examenes', JSON.stringify(examenes));
+    mostrarEstado('guardado ·');
+  }catch(e){
+    console.error('error al guardar examenes', e);
+  }
+}
+
+async function cargarExamenes(){
+  if(hayAlmacenamiento){
+    try{
+      const r = leerLocal('mis-examenes');
+      if(r && r.value){
+        const guardados = JSON.parse(r.value);
+        guardados.forEach(ex=>{
+          idExamen = Math.max(idExamen, ex.id || 0);
+          examenes.push(ex);
+          listaExamenes.appendChild(crearFilaExamen(ex));
+        });
+      }
+    }catch(e){ /* nada guardado todavía */ }
+  }
+  if(examenes.length === 0){
+    agregarExamenNuevo({});
+  }
+}
+
+document.getElementById('agregarExamen').addEventListener('click', ()=>{
+  agregarExamenNuevo({});
+  guardarExamenes();
+  listaExamenes.lastElementChild.querySelector('.examen-materia').focus();
+});
+
+cargarExamenes();
+</script>
+</body>
+</html>

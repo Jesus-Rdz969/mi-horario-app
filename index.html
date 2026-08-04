@@ -636,26 +636,25 @@
     justify-content:center;
   }
   @media (max-width:640px){
-    .examen-item{position:relative;padding-top:14px;}
+    .examen-item{padding-top:8px;}
     .examen-fila{
       grid-template-columns:64px 1fr;
-      grid-template-areas:"m t" "f f" "c c";
+      grid-template-areas:"m t" "f f" "c c" "b b";
       row-gap:8px;
-      padding-right:0;
     }
     .examen-materia{grid-area:m;width:64px;font-size:11px;}
-    .examen-texto{grid-area:t;padding-right:40px;}
+    .examen-texto{grid-area:t;}
     .examen-fecha{grid-area:f;height:38px;width:100%;}
     .examen-cuenta{grid-area:c;font-size:12px;padding:8px;}
     .examen-borrar{
-      position:absolute;
-      top:0;
-      right:0;
-      width:26px;
-      height:26px;
+      grid-area:b;
+      width:100%;
+      height:38px;
+      border-radius:14px;
       font-size:13px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.3);
+      font-weight:600;
     }
+    .examen-borrar::after{content:" eliminar examen";}
   }
 </style>
 </head>

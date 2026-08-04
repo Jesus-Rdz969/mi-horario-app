@@ -448,11 +448,23 @@
     justify-content:center;
   }
   @media (max-width:560px){
-    .tarea-fila{grid-template-columns:64px 1fr;grid-template-areas:"m t" "f a";}
+    .tarea-fila{
+      grid-template-columns:64px 1fr;
+      grid-template-areas:"m t" "f f" "a a";
+      row-gap:8px;
+    }
     .tarea-materia{grid-area:m;width:64px;font-size:11px;}
     .tarea-texto{grid-area:t;}
-    .tarea-fecha{grid-area:f;}
-    .tarea-acciones{grid-area:a;flex-direction:row;}
+    .tarea-fecha{grid-area:f;width:100%;height:40px;}
+    .tarea-acciones{
+      grid-area:a;
+      flex-direction:row;
+      justify-content:flex-end;
+      gap:10px;
+      padding-top:2px;
+      border-top:1px dashed rgba(120,110,100,0.25);
+    }
+    .tarea-check, .tarea-borrar, .tarea-prioridad{width:44px;height:40px;}
   }
 
   /* ---- notas ---- */
@@ -624,12 +636,25 @@
     justify-content:center;
   }
   @media (max-width:640px){
-    .examen-fila{grid-template-columns:64px 1fr;grid-template-areas:"m t" "f c" "b b";}
+    .examen-item{position:relative;}
+    .examen-fila{
+      grid-template-columns:64px 1fr;
+      grid-template-areas:"m t" "f c";
+      row-gap:8px;
+      padding-right:36px;
+    }
     .examen-materia{grid-area:m;width:64px;font-size:11px;}
     .examen-texto{grid-area:t;}
-    .examen-fecha{grid-area:f;}
-    .examen-cuenta{grid-area:c;}
-    .examen-borrar{grid-area:b;width:100%;}
+    .examen-fecha{grid-area:f;height:38px;}
+    .examen-cuenta{grid-area:c;font-size:11px;}
+    .examen-borrar{
+      position:absolute;
+      top:6px;
+      right:6px;
+      width:28px;
+      height:28px;
+      font-size:14px;
+    }
   }
 </style>
 </head>

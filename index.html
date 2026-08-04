@@ -639,14 +639,14 @@
     .examen-item{position:relative;}
     .examen-fila{
       grid-template-columns:64px 1fr;
-      grid-template-areas:"m t" "f c";
+      grid-template-areas:"m t" "f f" "c c";
       row-gap:8px;
       padding-right:36px;
     }
     .examen-materia{grid-area:m;width:64px;font-size:11px;}
     .examen-texto{grid-area:t;}
-    .examen-fecha{grid-area:f;height:38px;}
-    .examen-cuenta{grid-area:c;font-size:11px;}
+    .examen-fecha{grid-area:f;height:38px;width:100%;}
+    .examen-cuenta{grid-area:c;font-size:12px;padding:8px;}
     .examen-borrar{
       position:absolute;
       top:6px;
